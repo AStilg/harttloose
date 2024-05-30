@@ -1,0 +1,29 @@
+The following files are expected with the distribution.
+NOTE: functions that are expected to clash are contained in the "provided" directory.
+
+./:
+aspect_ratio_to_conk.m		       spheroidal_expansion.m
+bsc_bessel_spheroidal.m	       spheroidal_scale_factors.m
+bsc_plane_spheroidal.m		       spheroidal_u_coefficients.m
+change_nmax_spheroidal.m	       spheroidalvwf.m
+examples/			       spheroidalvwf_farfield.m
+improvementsortodo		       stmatrix_cylinder_ebcm.m
+manifest.txt			       stmatrix_cylinder_pm.m
+mode_couplings_spheroidal.m	       stmatrix_spheroid_ebcm.m
+ndotxietaphicross.m		       stmatrix_spheroid_pm.m
+neg_spheroidal_continued_fractions.m  testfunction/
+provided/			       xietaphi2rtp.m
+rtp2xietaphi.m			       xietaphi2xyz.m
+rtpv2xietaphiv.m		       xietaphiv2rtpv.m
+spheroidalR1.m			       xietaphiv2xyzv.m
+spheroidalR2.m			       xyz2xietaphi.m
+spheroidalS1.m			       xyzv2xietaphiv.m
+spheroidal_continued_fractions.m		       
+
+testfunction/:
+ultimate_spheroidal_formulation_test.m
+
+provided/:
+combined_index.m     romberg_int_grid.m  spherical_harmonic_normalisation.m
+gausslegendreroot.m  sbesselj.m
+sbessely.m			 legendrecol.m
