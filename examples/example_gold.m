@@ -51,7 +51,6 @@ warning('on','MATLAB:rankDeficientMatrix');
 
 % as the spheroidal functions are not properly orthonormal we will have to convert.
 C_sca=zeros(length(AR),length(th));
-C_ext=C_sca;
 for ii=1:length(AR)
 
     spq=pqCell{ii};
@@ -70,8 +69,6 @@ for ii=1:length(AR)
         b(:,jj)=spheroidal_to_spherical(AR(ii)>1,k_medium*c(ii),sab(end/2+1:end,jj),nmaxt);
     end
     C_sca(ii,:)=sum(abs(p).^2+abs(q).^2)./sum(abs(a).^2+abs(b).^2);
-    C_ext(ii,:)=sum((p)+(q))./sum(abs(a).^2+abs(b).^2);
-
 end
 %%
 
