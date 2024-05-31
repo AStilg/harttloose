@@ -27,7 +27,7 @@ nmax=max(ka2nmax(ac*abs(k_particle)),[],'all')+5;
 % generate angular illumination sweep.
 th=linspace(0,pi,100)';
 ph=0*th;
-pol=[1,0].*th;
+pol=[1,0].*ones(size(th));
 
 pqCell=cell(length(AR),1);
 cdCell=pqCell;
