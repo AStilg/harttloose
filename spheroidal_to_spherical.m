@@ -8,7 +8,6 @@ function A_mod = spheroidal_to_spherical(isProlate,c,A,nmaxout);
 % A_mod = spheroidal_to_spherical(isProlate,c,A,nmaxout);
 %
 % where,
-
 % isProlate -- true/false
 % c         -- interfocal number. Note: two mediums of operation can be set
 %              in the order of [c_out,c_in].
