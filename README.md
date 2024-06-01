@@ -33,10 +33,10 @@ All main toolbox functions come with some sort of help message that describes wh
   - ``xietaphiv2xyzv``
   - ``xietaphiv2rtpv``
 - Three base wave functions:
-  - ``spheroidalS1`` - Angular spheroidal wavefunctions of the first kind
-  - ``spheroidalR1`` - Radial spheroidal wavefunctions of the first kind
-  - ``spheroidalR2`` - Radial spheroidal wavefunctions of the second kind
-- Two sets of vector wavefunctions
+  - ``spheroidalS1`` - Angular spheroidal wavefunctions of the first kind.
+  - ``spheroidalR1`` - Radial spheroidal wavefunctions of the first kind.
+  - ``spheroidalR2`` - Radial spheroidal wavefunctions of the second kind.
+- Two sets of vector wavefunctions:
   - ``spheroidalvwf`` - Outputs outgoing, incoming, and regular vector wavefunctions
   - ``spheroidalvwf_farfield`` - Outputs only outgoing and incoming vector wavefunctions that are accurate in double precision only for $c\xi>10^{7.5}$.
 - sT-Matrix functions that all start with ``stmatrix``:
@@ -44,15 +44,15 @@ All main toolbox functions come with some sort of help message that describes wh
   - ``stmatrix_spheroid_pm``
   - ``stmatrix_cylinder_ebcm``
   - ``stmatrix_cylinder_pm``
-- Beam shape coefficient generators that start with ``bsc`` and end with ``spheroidal``
+- Beam shape coefficient generators that start with ``bsc`` and end with ``spheroidal``:
   - ``bsc_plane_spheroidal``
   - ``bsc_bessel_spheroidal``
 - Mode transformation functions:
   - ``spheroidal_u_coefficients`` - The fundamental routine that allows the toolbox to function. It is responsible for solving the spheroidal eigenvalue problem and generating the basis weights.
   - ``spheroidal_expansion`` - Generates the vector mode transformation between spherical-and-spheroidal wavefunctions.
   - ``spherical_to_spheroidal`` - Enables *ott* T-matrix and beam shape coefficients (the data) to be converted to spheroidal coefficients.
-  - ``spheroidal_to_spherical`` - Transforms spheroidal sT-matrix and beam shape coefficients to be converted to data for import into *ott*.
-- Other needed functions:
+  - ``spheroidal_to_spherical`` - Transforms sT-matrix and spheroidal beam shape coefficients into spherical mode data for import into *ott*.
+- Other `main' functions:
   - ``aspect_ratio_to_conk`` - Estimates the interfocal radius needed for an expansion in spheroidal wavefunctions.
   - ``change_nmax_spheroidal``
   - ``mode_couplings_spheroidal`` - For sT-matrix that use rotational and mirror symmetry reduction
