@@ -1,5 +1,5 @@
 function [I,R]=romberg_int_grid(f,x); 
-% romber_int_grid - calculates romber integration to however many
+% romber_int_grid - calculates romberg integration to however many
 %                   nested Richardson extrapolations it can.
 %
 % USAGE:
