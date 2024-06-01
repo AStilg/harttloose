@@ -39,14 +39,24 @@ zrange=[-.5,.5]*height;
 xep=xyz2xietaphi(isProlate,c,XR(:),0*XR(:),ZR(:)); %get outer box
 xi_max=max(xep(:,1));
 
-%create positive grid seeds:
-[x_max,~,~]=xietaphi2xyz(isProlate,c,xi_max,0,0);
-
-x_ext=linspace(ac(1),x_max,nxi).';
-x_int=linspace(0,ac(1),nxi).';
-
-[xi_ext,~,~]=xyz2xietaphi(isProlate,c,x_ext,0*x_ext,0*x_ext);
-[xi_int,~,~]=xyz2xietaphi(isProlate,c,x_int,0*x_int,0*x_int);
+if isProlate
+    %create positive grid seeds:
+    [x_max,~,~]=xietaphi2xyz(isProlate,c,xi_max,0,0);
+		    
+    x_ext=linspace(ac(1),x_max,nxi).';
+    x_int=linspace(0,ac(1),nxi).';
+			    
+    [xi_ext,~,~]=xyz2xietaphi(isProlate,c,x_ext,0*x_ext,0*x_ext);
+    [xi_int,~,~]=xyz2xietaphi(isProlate,c,x_int,0*x_int,0*x_int);
+else
+    [~,~,z_max]=xietaphi2xyz(isProlate,c,xi_max,1,0);
+	        
+    z_ext=linspace(ac(2),z_max,nxi).';
+    z_int=linspace(0,ac(2),nxi).';
+		        
+    [xi_ext,~,~]=xyz2xietaphi(isProlate,c,0*z_ext,0*z_ext,z_ext);
+    [xi_int,~,~]=xyz2xietaphi(isProlate,c,0*z_int,0*z_int,z_int);
+end
 
 %make eta nice on ac(1); we're lazy and are going to use a spline.
 etad=(linspace(-1,1,1000)');
