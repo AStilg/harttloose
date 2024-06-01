@@ -8,6 +8,13 @@ To run an example, simply enter the ``examples`` directory and run one of the ex
 
 Personally, I suggest that the ``testing\run_test.m`` m-file be run first to see if there are some problems. If it fails the first time, run it twice more to see if it passes. It can fail in the tests checking wavefuncitons with a numerical calculation of curl because of numerical instability near poles. This is a far-future improvement for the toolbox unless it is something you would wish to look at!
 
+### Writing your own code
+You will need to put:
+```matlab
+addpath ./harttloose ./harttloose/provided
+```
+at the start of your program to use the toolbox. If you wish you could simplify this by moving the ``provided`` directory contents into the ``harttloose`` directory.
+
 ## About the ``provided`` directory and other loose files...
 This directory contains several functions that can be found in other packages such as [ott](https://github.com/ilent2/ott/), in cases where you wish to use those functions instead you can interchange them without issue.
 
