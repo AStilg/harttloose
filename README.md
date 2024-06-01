@@ -8,8 +8,10 @@ To run an example, simply enter the ``examples`` directory and run one of the ex
 
 Personally, I suggest that the ``testing\run_test.m`` m-file be run first to see if there are some problems. If it fails the first time, run it twice more to see if it passes. It can fail in the tests checking wavefuncitons with a numerical calculation of curl because of numerical instability near poles. This is a far-future improvement for the toolbox unless it is something you would wish to look at!
 
-## About the ``provided`` directory...
+## About the ``provided`` directory and other loose files...
 This directory contains several functions that can be found in other packages such as [ott](https://github.com/ilent2/ott/), in cases where you wish to use those functions instead you can interchange them without issue.
+
+There are a series of functions that I do not mention in this README. These functions are still part of the toolbox, but they are not an important feature of the toolbox. By talking about them further, I take away from the important functions I list in the section below.
 
 ## Summary of toolbox functions
 All main toolbox functions come with some sort of help message that describes what goes in and comes out of them. For more details use the MATLAB command line: ``>> help <function name>``.
