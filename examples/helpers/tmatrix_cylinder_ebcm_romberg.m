@@ -17,7 +17,13 @@ function [T,R,RgQ,Q]=tmatrix_cylinder_ebcm_romberg(nmax,k_medium,k_particle,wh);
 %
 % this code is needed to generate example outputs.
 % 
-% PACKAGE INFO
+% You must obtain/distribute a copy of the LICENSE with any derivations of this 
+% file along with the following message.
+%
+% Author: Alexander Stilgoe (a.stilgoe@uq.edu.au)
+% Copyright (C) The University of Queensland.
+% This file is part of HARTTloose.
+% The LICENSE can be obtained at: https://github.com/AStilg/harttloose/blob/main/LICENSE
 
 ac=wh/2;
 

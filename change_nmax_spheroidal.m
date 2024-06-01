@@ -7,7 +7,13 @@ function B = change_nmax_spheroidal(A,Nmax)
 % A warning is issued if the matrix/vector is being truncated and possibly
 % significant values are being discarded.
 %
-% PACKAGE INFO
+% You must obtain/distribute a copy of the LICENSE with any derivations of this 
+% file along with the following message.
+%
+% Author: Alexander Stilgoe (a.stilgoe@uq.edu.au)
+% Copyright (C) The University of Queensland.
+% This file is part of HARTTloose.
+% The LICENSE can be obtained at: https://github.com/AStilg/harttloose/blob/main/LICENSE
 
 warning_error_level = 1e-6;
 

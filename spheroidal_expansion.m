@@ -19,7 +19,13 @@ function [U,Nnm0,Nnmc,im_v]=spheroidal_expansion(isProlate,c,nmax);
 % inverse vector operator:
 % iU_v= U(1:orders_wanted,2:length(Nnm0))'.*im_v(1:orders_wanted)'.*(im_v(2:length(Nnm0)).*Nnm0(2:length(Nnm0)));
 %
-% PACKAGE INFO
+% You must obtain/distribute a copy of the LICENSE with any derivations of this 
+% file along with the following message.
+%
+% Author: Alexander Stilgoe (a.stilgoe@uq.edu.au)
+% Copyright (C) The University of Queensland.
+% This file is part of HARTTloose.
+% The LICENSE can be obtained at: https://github.com/AStilg/harttloose/blob/main/LICENSE
 
 N=round(abs(c)+nmax);
 

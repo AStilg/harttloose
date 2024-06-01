@@ -26,7 +26,13 @@ function [Rnm,dRnm_mod,eigenvalues]=spheroidalR1(isProlate,n,m,c,xi_in,allvalues
 %
 % NOTE: if allvalues, the last few rows are guaranteed to be wrong.
 %
-% PACKAGE INFO
+% You must obtain/distribute a copy of the LICENSE with any derivations of this 
+% file along with the following message.
+%
+% Author: Alexander Stilgoe (a.stilgoe@uq.edu.au)
+% Copyright (C) The University of Queensland.
+% This file is part of HARTTloose.
+% The LICENSE can be obtained at: https://github.com/AStilg/harttloose/blob/main/LICENSE
 
 if nargin<6
     allvalues=false;

@@ -12,7 +12,13 @@ function [J_element]=ndotxietaphicross(n,A,B,ds);
 % B         -- numpoints x 3-vector.
 % dS        -- surface element, or other scalar factor needed for each point.
 %
-% PACKAGE INFO
+% You must obtain/distribute a copy of the LICENSE with any derivations of this 
+% file along with the following message.
+%
+% Author: Alexander Stilgoe (a.stilgoe@uq.edu.au)
+% Copyright (C) The University of Queensland.
+% This file is part of HARTTloose.
+% The LICENSE can be obtained at: https://github.com/AStilg/harttloose/blob/main/LICENSE
 
 A2B1=A(:,2).*B(:,1);
 A3B1=A(:,3).*B(:,1);

@@ -10,7 +10,13 @@ function [N,logflag]=spherical_harmonic_normalisation(n,m);
 % n -- radial mode
 % m -- azimuthal mode
 %
-% PACKAGE INFO
+% You must obtain/distribute a copy of the LICENSE with any derivations of this 
+% file along with the following message.
+%
+% Author: Alexander Stilgoe (a.stilgoe@uq.edu.au)
+% Copyright (C) The University of Queensland.
+% This file is part of HARTTloose.
+% The LICENSE can be obtained at: https://github.com/AStilg/harttloose/blob/main/LICENSE
 
 logflag=0;
 

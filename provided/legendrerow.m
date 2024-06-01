@@ -9,7 +9,13 @@ function pnm=legendrerow(n,theta,m,xflag)
 % *may* provide a benefit in Octave. Inspiration from [Holmes and Featherstone, 2002]
 % and [Jekeli et al., 2007].
 %
-% PACKAGE INFO
+% You must obtain/distribute a copy of the LICENSE with any derivations of this 
+% file along with the following message.
+%
+% Author: Alexander Stilgoe (a.stilgoe@uq.edu.au)
+% Copyright (C) The University of Queensland.
+% This file is part of HARTTloose.
+% The LICENSE can be obtained at: https://github.com/AStilg/harttloose/blob/main/LICENSE
 
 if n==0;
     pnm=1/sqrt(2*pi)/sqrt(2);

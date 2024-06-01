@@ -22,7 +22,13 @@ function [xi,eta,phi,xifac,etafac]=xyz2xietaphi(isProlate,conk,x,y,z)
 %
 % NOTE: [Nx3]: xyz can always be be used.
 %
-% PACKAGE INFO
+% You must obtain/distribute a copy of the LICENSE with any derivations of this 
+% file along with the following message.
+%
+% Author: Alexander Stilgoe (a.stilgoe@uq.edu.au)
+% Copyright (C) The University of Queensland.
+% This file is part of HARTTloose.
+% The LICENSE can be obtained at: https://github.com/AStilg/harttloose/blob/main/LICENSE
 
 if nargin <5
 

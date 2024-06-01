@@ -17,7 +17,13 @@ function [T,T2,c,CM1,CM2,CM3]=stmatrix_spheroid_pm(nmax,k_medium,k_particle,ac);
 % T2   - RgQ matrix.
 % c_d  - interfocal distance (in units of ac).
 %
-% PACKAGE INFO
+% You must obtain/distribute a copy of the LICENSE with any derivations of this 
+% file along with the following message.
+%
+% Author: Alexander Stilgoe (a.stilgoe@uq.edu.au)
+% Copyright (C) The University of Queensland.
+% This file is part of HARTTloose.
+% The LICENSE can be obtained at: https://github.com/AStilg/harttloose/blob/main/LICENSE
 
 %% testing
 % aspect_ratio=3;

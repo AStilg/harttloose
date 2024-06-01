@@ -22,7 +22,13 @@ function [x,y,z]=xietaphi2xyz(isProlate,conk,xi,eta,phi,xifac,etafac);
 % NOTE: xietaphi can be [N x (3,4,5)] of the three (n) cases of the above.
 % NOTE: allparams can always be used as an [N x 3] output.
 %
-% PACKAGE INFO
+% You must obtain/distribute a copy of the LICENSE with any derivations of this 
+% file along with the following message.
+%
+% Author: Alexander Stilgoe (a.stilgoe@uq.edu.au)
+% Copyright (C) The University of Queensland.
+% This file is part of HARTTloose.
+% The LICENSE can be obtained at: https://github.com/AStilg/harttloose/blob/main/LICENSE
 
 if nargin==3
     if size(xi,2)==3

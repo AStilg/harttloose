@@ -21,7 +21,13 @@ function [xv,yv,zv,x,y,z]=xietaphiv2xyzv(isProlate,conk,xiv,etav,phiv,xi,eta,phi
 % xietaphiv - [N x 3] spheroidal vector field.
 % xietaphi - [N x 3] spheroidal coordinates.
 %
-% PACKAGE INFO
+% You must obtain/distribute a copy of the LICENSE with any derivations of this 
+% file along with the following message.
+%
+% Author: Alexander Stilgoe (a.stilgoe@uq.edu.au)
+% Copyright (C) The University of Queensland.
+% This file is part of HARTTloose.
+% The LICENSE can be obtained at: https://github.com/AStilg/harttloose/blob/main/LICENSE
 
 if nargin<8
     phi=etav(:,3);

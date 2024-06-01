@@ -8,7 +8,13 @@ function [x,w]=gausslegendreroot(n,ab);
 % n  -- number of nodes
 % ab -- integration limits (2 vector)
 %
-% PACKAGE INFO
+% You must obtain/distribute a copy of the LICENSE with any derivations of this 
+% file along with the following message.
+%
+% Author: Alexander Stilgoe (a.stilgoe@uq.edu.au)
+% Copyright (C) The University of Queensland.
+% This file is part of HARTTloose.
+% The LICENSE can be obtained at: https://github.com/AStilg/harttloose/blob/main/LICENSE
 
 if nargin==1
     ab=[-1,1];

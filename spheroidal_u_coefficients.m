@@ -22,7 +22,13 @@ function [u,n,eigenvalues,W,uold] = spheroidal_u_coefficients(isProlate,isOdd,m,
 % Parity switches between either odd or even series in n. Thus, the columns
 % of u in terms of mode n are: n(i)\in[m+isodd:2:m+2*N+isodd].
 %
-% PACKAGE INFO
+% You must obtain/distribute a copy of the LICENSE with any derivations of this 
+% file along with the following message.
+%
+% Author: Alexander Stilgoe (a.stilgoe@uq.edu.au)
+% Copyright (C) The University of Queensland.
+% This file is part of HARTTloose.
+% The LICENSE can be obtained at: https://github.com/AStilg/harttloose/blob/main/LICENSE
 
 if nargin<4
     N=ceil(abs(c)+35);

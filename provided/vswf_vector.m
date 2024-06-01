@@ -20,7 +20,13 @@ function [M,N,M2,N2,M3,N3] = vswf_vector(n,m,kr,theta,phi,htype)
 %
 % The three components of each vector are [r,theta,phi].
 %
-% PACKAGE INFO
+% You must obtain/distribute a copy of the LICENSE with any derivations of this 
+% file along with the following message.
+%
+% Author: Alexander Stilgoe (a.stilgoe@uq.edu.au)
+% Copyright (C) The University of Queensland.
+% This file is part of HARTTloose.
+% The LICENSE can be obtained at: https://github.com/AStilg/harttloose/blob/main/LICENSE
 
 % Check input vectors
 % These must all be of equal length if non-scalar

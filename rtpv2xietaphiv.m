@@ -21,7 +21,13 @@ function [xiv,etav,phiv,xi,eta,phi]=rtpv2xietaphiv(isProlate,conk,rv,tv,pv,r,t,p
 % rtpv - [N x 3] spherical vector field.
 % rtp - [N x 3] spherical coordinates.
 %
-% PACKAGE INFO
+% You must obtain/distribute a copy of the LICENSE with any derivations of this 
+% file along with the following message.
+%
+% Author: Alexander Stilgoe (a.stilgoe@uq.edu.au)
+% Copyright (C) The University of Queensland.
+% This file is part of HARTTloose.
+% The LICENSE can be obtained at: https://github.com/AStilg/harttloose/blob/main/LICENSE
 
 if nargin < 6
    r = tv(:,1);
