@@ -70,7 +70,7 @@ ranges=[-1,-double(vpa(rhs(subs(etasol,[phi,c_sym],[0,c])),16))];
 ranges=[ranges;[ranges(2),-ranges(2)];[-ranges(2),1]];
 
 % create match points
-match_points=2*(2*nmax+2)+100;
+match_points=2*(2*nmax+2)+10;
 
 etan=zeros(match_points,size(ranges,1));
 w=etan;
@@ -161,17 +161,17 @@ for ii=1:length(uniq_n)
         find_nj=find(n==jj-1);
         for kk=0:min(ii-1,jj-1)
             i_indx=find(m(find_ni)==kk);
-            j_indx=find(m(find_nj)==kk);
+            j_indx=find(m(find_nj)==-kk);
 
-            J11(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(M3(find_ni(i_indx),:).',[],3),reshape(M1(find_nj(j_indx),:)',[],3),dS);
-            J22(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(N3(find_ni(i_indx),:).',[],3),reshape(N1(find_nj(j_indx),:)',[],3),dS);
-            J12(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(M3(find_ni(i_indx),:).',[],3),reshape(N1(find_nj(j_indx),:)',[],3),dS);
-            J21(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(N3(find_ni(i_indx),:).',[],3),reshape(M1(find_nj(j_indx),:)',[],3),dS);
+            J11(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(M3(find_ni(i_indx),:).',[],3),reshape(M1(find_nj(j_indx),:).',[],3),dS);
+            J22(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(N3(find_ni(i_indx),:).',[],3),reshape(N1(find_nj(j_indx),:).',[],3),dS);
+            J12(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(M3(find_ni(i_indx),:).',[],3),reshape(N1(find_nj(j_indx),:).',[],3),dS);
+            J21(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(N3(find_ni(i_indx),:).',[],3),reshape(M1(find_nj(j_indx),:).',[],3),dS);
             
-            RgJ11(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(M3(find_ni(i_indx),:).',[],3),reshape(M(find_nj(j_indx),:)',[],3),dS);
-            RgJ22(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(N3(find_ni(i_indx),:).',[],3),reshape(N(find_nj(j_indx),:)',[],3),dS);
-            RgJ12(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(M3(find_ni(i_indx),:).',[],3),reshape(N(find_nj(j_indx),:)',[],3),dS);
-            RgJ21(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(N3(find_ni(i_indx),:).',[],3),reshape(M(find_nj(j_indx),:)',[],3),dS);
+            RgJ11(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(M3(find_ni(i_indx),:).',[],3),reshape(M(find_nj(j_indx),:).',[],3),dS);
+            RgJ22(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(N3(find_ni(i_indx),:).',[],3),reshape(N(find_nj(j_indx),:).',[],3),dS);
+            RgJ12(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(M3(find_ni(i_indx),:).',[],3),reshape(N(find_nj(j_indx),:).',[],3),dS);
+            RgJ21(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(N3(find_ni(i_indx),:).',[],3),reshape(M(find_nj(j_indx),:).',[],3),dS);
         end
     end
 end
@@ -182,17 +182,17 @@ for ii=1:length(uniq_n)
         find_nj=find(n==jj-1);
         for kk=0:min(ii-1,jj-1)
             i_indx=find(m(find_ni)==-kk);
-            j_indx=find(m(find_nj)==-kk);
+            j_indx=find(m(find_nj)==kk);
 
-            mJ11(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(M3(find_ni(i_indx),:).',[],3),reshape(M1(find_nj(j_indx),:)',[],3),dS);
-            mJ22(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(N3(find_ni(i_indx),:).',[],3),reshape(N1(find_nj(j_indx),:)',[],3),dS);
-            mJ12(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(M3(find_ni(i_indx),:).',[],3),reshape(N1(find_nj(j_indx),:)',[],3),dS);
-            mJ21(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(N3(find_ni(i_indx),:).',[],3),reshape(M1(find_nj(j_indx),:)',[],3),dS);
+            mJ11(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(M3(find_ni(i_indx),:).',[],3),reshape(M1(find_nj(j_indx),:).',[],3),dS);
+            mJ22(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(N3(find_ni(i_indx),:).',[],3),reshape(N1(find_nj(j_indx),:).',[],3),dS);
+            mJ12(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(M3(find_ni(i_indx),:).',[],3),reshape(N1(find_nj(j_indx),:).',[],3),dS);
+            mJ21(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(N3(find_ni(i_indx),:).',[],3),reshape(M1(find_nj(j_indx),:).',[],3),dS);
             
-            mRgJ11(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(M3(find_ni(i_indx),:).',[],3),reshape(M(find_nj(j_indx),:)',[],3),dS);
-            mRgJ22(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(N3(find_ni(i_indx),:).',[],3),reshape(N(find_nj(j_indx),:)',[],3),dS);
-            mRgJ12(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(M3(find_ni(i_indx),:).',[],3),reshape(N(find_nj(j_indx),:)',[],3),dS);
-            mRgJ21(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(N3(find_ni(i_indx),:).',[],3),reshape(M(find_nj(j_indx),:)',[],3),dS);
+            mRgJ11(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(M3(find_ni(i_indx),:).',[],3),reshape(M(find_nj(j_indx),:).',[],3),dS);
+            mRgJ22(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(N3(find_ni(i_indx),:).',[],3),reshape(N(find_nj(j_indx),:).',[],3),dS);
+            mRgJ12(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(M3(find_ni(i_indx),:).',[],3),reshape(N(find_nj(j_indx),:).',[],3),dS);
+            mRgJ21(jj,ii,kk+1)=ndotxietaphicross(nxepv,reshape(N3(find_ni(i_indx),:).',[],3),reshape(M(find_nj(j_indx),:).',[],3),dS);
         end
     end
 end
@@ -215,26 +215,26 @@ for m=0:size(J11,3)-1
     [CI,CJ]=ndgrid(ci,ci);
     Q11_index_map=sub2ind((nmax*(nmax+2)+1)*[1,1],CI(:),CJ(:));
     
-    Q11(Q11_index_map)=k_medium*(k_particle*J21([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*J12([m:nmax]+1,[m:nmax]+1,m+1));
-    Q21(Q11_index_map)=k_medium*(k_particle*J22([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*J11([m:nmax]+1,[m:nmax]+1,m+1));
-    Q12(Q11_index_map)=k_medium*(k_particle*J11([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*J22([m:nmax]+1,[m:nmax]+1,m+1));
-    Q22(Q11_index_map)=k_medium*(k_particle*J12([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*J21([m:nmax]+1,[m:nmax]+1,m+1));
+    Q11(Q11_index_map)=(-1).^m.*k_medium*(k_particle*J21([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*J12([m:nmax]+1,[m:nmax]+1,m+1));
+    Q21(Q11_index_map)=(-1).^m.*k_medium*(k_particle*J22([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*J11([m:nmax]+1,[m:nmax]+1,m+1));
+    Q12(Q11_index_map)=(-1).^m.*k_medium*(k_particle*J11([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*J22([m:nmax]+1,[m:nmax]+1,m+1));
+    Q22(Q11_index_map)=(-1).^m.*k_medium*(k_particle*J12([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*J21([m:nmax]+1,[m:nmax]+1,m+1));
     
-    RgQ11(Q11_index_map)=k_medium*(k_particle*RgJ21([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*RgJ12([m:nmax]+1,[m:nmax]+1,m+1));
-    RgQ21(Q11_index_map)=k_medium*(k_particle*RgJ22([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*RgJ11([m:nmax]+1,[m:nmax]+1,m+1));
-    RgQ12(Q11_index_map)=k_medium*(k_particle*RgJ11([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*RgJ22([m:nmax]+1,[m:nmax]+1,m+1));
-    RgQ22(Q11_index_map)=k_medium*(k_particle*RgJ12([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*RgJ21([m:nmax]+1,[m:nmax]+1,m+1));
+    RgQ11(Q11_index_map)=(-1).^m.*k_medium*(k_particle*RgJ21([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*RgJ12([m:nmax]+1,[m:nmax]+1,m+1));
+    RgQ21(Q11_index_map)=(-1).^m.*k_medium*(k_particle*RgJ22([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*RgJ11([m:nmax]+1,[m:nmax]+1,m+1));
+    RgQ12(Q11_index_map)=(-1).^m.*k_medium*(k_particle*RgJ11([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*RgJ22([m:nmax]+1,[m:nmax]+1,m+1));
+    RgQ22(Q11_index_map)=(-1).^m.*k_medium*(k_particle*RgJ12([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*RgJ21([m:nmax]+1,[m:nmax]+1,m+1));
     if m>0
         Q11_index_map2=sub2ind((nmax*(nmax+2)+1)*[1,1],CI(:)-2*m,CJ(:)-2*m);
-        Q11(Q11_index_map2)=k_medium*(k_particle*mJ21([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*mJ12([m:nmax]+1,[m:nmax]+1,m+1));
-        Q21(Q11_index_map2)=k_medium*(k_particle*mJ22([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*mJ11([m:nmax]+1,[m:nmax]+1,m+1));
-        Q12(Q11_index_map2)=k_medium*(k_particle*mJ11([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*mJ22([m:nmax]+1,[m:nmax]+1,m+1));
-        Q22(Q11_index_map2)=k_medium*(k_particle*mJ12([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*mJ21([m:nmax]+1,[m:nmax]+1,m+1));
+        Q11(Q11_index_map2)=(-1).^m.*k_medium*(k_particle*mJ21([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*mJ12([m:nmax]+1,[m:nmax]+1,m+1));
+        Q21(Q11_index_map2)=(-1).^m.*k_medium*(k_particle*mJ22([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*mJ11([m:nmax]+1,[m:nmax]+1,m+1));
+        Q12(Q11_index_map2)=(-1).^m.*k_medium*(k_particle*mJ11([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*mJ22([m:nmax]+1,[m:nmax]+1,m+1));
+        Q22(Q11_index_map2)=(-1).^m.*k_medium*(k_particle*mJ12([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*mJ21([m:nmax]+1,[m:nmax]+1,m+1));
         
-        RgQ11(Q11_index_map2)=k_medium*(k_particle*mRgJ21([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*mRgJ12([m:nmax]+1,[m:nmax]+1,m+1));
-        RgQ21(Q11_index_map2)=k_medium*(k_particle*mRgJ22([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*mRgJ11([m:nmax]+1,[m:nmax]+1,m+1));
-        RgQ12(Q11_index_map2)=k_medium*(k_particle*mRgJ11([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*mRgJ22([m:nmax]+1,[m:nmax]+1,m+1));
-        RgQ22(Q11_index_map2)=k_medium*(k_particle*mRgJ12([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*mRgJ21([m:nmax]+1,[m:nmax]+1,m+1));
+        RgQ11(Q11_index_map2)=(-1).^m.*k_medium*(k_particle*mRgJ21([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*mRgJ12([m:nmax]+1,[m:nmax]+1,m+1));
+        RgQ21(Q11_index_map2)=(-1).^m.*k_medium*(k_particle*mRgJ22([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*mRgJ11([m:nmax]+1,[m:nmax]+1,m+1));
+        RgQ12(Q11_index_map2)=(-1).^m.*k_medium*(k_particle*mRgJ11([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*mRgJ22([m:nmax]+1,[m:nmax]+1,m+1));
+        RgQ22(Q11_index_map2)=(-1).^m.*k_medium*(k_particle*mRgJ12([m:nmax]+1,[m:nmax]+1,m+1)+k_medium*mRgJ21([m:nmax]+1,[m:nmax]+1,m+1));
     end
 end
 %% create a code to block up EBCM code to subspace.
@@ -243,8 +243,8 @@ T=zeros(2*size(Q11));
 Tu=T;
 R=T;
 
-Qu=conj(1i*[Q11,-Q12;-Q21,Q22]/2/pi);
-RgQu=conj(1i*[RgQ11,-RgQ12;-RgQ21,RgQ22]/2/pi);
+Qu=-2i*pi*[Q11,Q12;Q21,Q22];
+RgQu=-2i*pi*[RgQ11,RgQ12;RgQ21,RgQ22];
 % eyeR=eye(size(RgQu));
 MC=mode_couplings_spheroidal(nmax,[inf,1]);
 
@@ -258,8 +258,8 @@ UUNNUU=blkdiag(UNUd,UNUd);
 UiNUd=spherical_to_spheroidal(isProlate,k_medium*c,inv(N2));
 UUiNNUU=blkdiag(UiNUd,UiNUd);
 
-Q=UUiNNUU*Qu;
-RgQ=UUiNNUU*RgQu;
+Q=MC.*(UUiNNUU*Qu);
+RgQ=MC.*(UUiNNUU*RgQu);
 
 for ii=1:size(Q11,2)*2
     jvec=find(MC(:,ii));

@@ -93,14 +93,14 @@ Z_int=reshape(Z_int,size(Xi_int));
 
 externalMesh.X=X_ext;
 externalMesh.XI=Xi_ext;
-externalMesh.Y=Y_ext;
+externalMesh.Y=0*Y_ext;
 externalMesh.ETA=Eta_ext;
 externalMesh.Z=Z_ext;
 externalMesh.PHI=Phi_ext;
 
 internalMesh.X=X_int;
 internalMesh.XI=Xi_int;
-internalMesh.Y=Y_int;
+internalMesh.Y=0*Y_int;
 internalMesh.ETA=Eta_int;
 internalMesh.Z=Z_int;
 internalMesh.PHI=Phi_int;
