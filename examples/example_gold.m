@@ -75,7 +75,7 @@ end
 %set the plots and beam angle
 plot_field_index=[1,8,15];
 beam_index=10;
-th(beam_index)*180/pi;
+th(beam_index)*180/pi
 
 [ARG,TH]=meshgrid(AR,th);
 figure(100)
@@ -94,9 +94,11 @@ ylabel('aspect ratio');
 zlabel('C_{sca}');
 xticks([0:30:180]);
 subplot(1,3,2)
-surf(TH*180/pi,ARG,C_sca.',TH*180/pi,'edgecolor','none')
+surf(TH*180/pi,ARG,C_sca.',-TH*180/pi,'edgecolor','none')
 hold on
 plot3(TH(:,plot_field_index)*180/pi,ARG(:,plot_field_index),C_sca(plot_field_index,:).','k','LineWidth',2)
+C_scaM=mean(C_sca,2);
+plot3(0*ones(size(ARG(1,:))),ARG(1,:),C_scaM,'--','color',[.5,.5,.5],'linewidth',2)
 % plot3(TH(beam_index,:).'*180/pi,ARG(beam_index,:),C_sca(:,beam_index),'r','LineWidth',2)
 hold off
 axis square
@@ -106,7 +108,7 @@ xlabel('incident planewave angle [deg]')
 ylabel('aspect ratio');
 zlabel('C_{sca}');
 xticks([0:30:180]);
-view(90,0)
+view(-90,0)
 subplot(1,3,3)
 surf(TH*180/pi,ARG,C_sca.',ARG,'edgecolor','none')
 hold on
@@ -151,7 +153,7 @@ for jj=1:length(plot_field_index)
     [extMesh,intMesh]=nice_spheroidal_mesh(ac(:,ii),21,20,2*1.05*max(ac(:)),2*1.05*max(ac(:)));
 
     [Msca,Nsca,~,~,Minc,Ninc]=spheroidalvwf(isProlate,n,m,k_medium*c(ii),extMesh.XI(:),extMesh.ETA(:),extMesh.PHI(:));
-    [Mint,Nint]=spheroidalvwf(isProlate,n,m,conj(k_particle)*c(ii),intMesh.XI(:),intMesh.ETA(:),intMesh.PHI(:),3); %why conjugate?
+    [Mint,Nint]=spheroidalvwf(isProlate,n,m,(k_particle)*c(ii),intMesh.XI(:),intMesh.ETA(:),intMesh.PHI(:),3); %why conjugate?
 
     H_ext=reshape(1*[Nsca.',Msca.']*spq(:,beam_index)+1*[Ninc.',Minc.']*sab(:,beam_index),[],3);
     H_int=(k_particle/k_medium)^1*reshape(1*[Nint.',Mint.']*scd(:,beam_index),[],3);

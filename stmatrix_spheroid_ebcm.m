@@ -87,7 +87,7 @@ xi2_f=xi_f.^2;
 xep=[xi.*ones(size(eta)),eta,zeros(size(eta))];
 
 [M1,N1,~,~,M,N]=spheroidalvwf(isProlate,n,m,k_medium*c,xep(:,1:3));
-[M3,N3,~,~,~,~]=spheroidalvwf(isProlate,n,m,k_particle*c,xep(:,1:3),3);
+[M3,N3,~,~,~,~]=spheroidalvwf(isProlate,n,m,k_particle'*c,xep(:,1:3),3); %we conjugate later
 
 uniq_n=unique(n);
 %positive m;
@@ -110,7 +110,7 @@ mRgJ22=J11;
 
 oneeta=ones(size(eta));
 
-h=spheroidal_scale_factors(isProlate,k_medium*c,xep(:,1),xep(:,2));
+h=spheroidal_scale_factors(isProlate,c,xep(:,1),xep(:,2));
 
 dS=w.*h(:,2).*h(:,3); %include scale factors and GL weights
 
@@ -123,15 +123,15 @@ for ii=1:length(uniq_n)
             i_indx=find(m(find_ni)==kk);
             j_indx=find(m(find_nj)==kk);
 
-            J11(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(M3(find_ni(i_indx),:).',[],3),reshape(M1(find_nj(j_indx),:)',[],3),dS);
-            J22(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(N3(find_ni(i_indx),:).',[],3),reshape(N1(find_nj(j_indx),:)',[],3),dS);
-            J12(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(M3(find_ni(i_indx),:).',[],3),reshape(N1(find_nj(j_indx),:)',[],3),dS);
-            J21(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(N3(find_ni(i_indx),:).',[],3),reshape(M1(find_nj(j_indx),:)',[],3),dS);
+            J11(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(M3(find_ni(i_indx),:)',[],3),reshape(M1(find_nj(j_indx),:).',[],3),dS);
+            J22(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(N3(find_ni(i_indx),:)',[],3),reshape(N1(find_nj(j_indx),:).',[],3),dS);
+            J12(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(M3(find_ni(i_indx),:)',[],3),reshape(N1(find_nj(j_indx),:).',[],3),dS);
+            J21(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(N3(find_ni(i_indx),:)',[],3),reshape(M1(find_nj(j_indx),:).',[],3),dS);
             
-            RgJ11(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(M3(find_ni(i_indx),:).',[],3),reshape(M(find_nj(j_indx),:)',[],3),dS);
-            RgJ22(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(N3(find_ni(i_indx),:).',[],3),reshape(N(find_nj(j_indx),:)',[],3),dS);
-            RgJ12(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(M3(find_ni(i_indx),:).',[],3),reshape(N(find_nj(j_indx),:)',[],3),dS);
-            RgJ21(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(N3(find_ni(i_indx),:).',[],3),reshape(M(find_nj(j_indx),:)',[],3),dS);
+            RgJ11(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(M3(find_ni(i_indx),:)',[],3),reshape(M(find_nj(j_indx),:).',[],3),dS);
+            RgJ22(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(N3(find_ni(i_indx),:)',[],3),reshape(N(find_nj(j_indx),:).',[],3),dS);
+            RgJ12(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(M3(find_ni(i_indx),:)',[],3),reshape(N(find_nj(j_indx),:).',[],3),dS);
+            RgJ21(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(N3(find_ni(i_indx),:)',[],3),reshape(M(find_nj(j_indx),:).',[],3),dS);
         end
     end
 end
@@ -144,15 +144,15 @@ for ii=1:length(uniq_n)
             i_indx=find(m(find_ni)==-kk);
             j_indx=find(m(find_nj)==-kk);
 
-            mJ11(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(M3(find_ni(i_indx),:).',[],3),reshape(M1(find_nj(j_indx),:)',[],3),dS);
-            mJ22(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(N3(find_ni(i_indx),:).',[],3),reshape(N1(find_nj(j_indx),:)',[],3),dS);
-            mJ12(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(M3(find_ni(i_indx),:).',[],3),reshape(N1(find_nj(j_indx),:)',[],3),dS);
-            mJ21(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(N3(find_ni(i_indx),:).',[],3),reshape(M1(find_nj(j_indx),:)',[],3),dS);
+            mJ11(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(M3(find_ni(i_indx),:)',[],3),reshape(M1(find_nj(j_indx),:).',[],3),dS);
+            mJ22(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(N3(find_ni(i_indx),:)',[],3),reshape(N1(find_nj(j_indx),:).',[],3),dS);
+            mJ12(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(M3(find_ni(i_indx),:)',[],3),reshape(N1(find_nj(j_indx),:).',[],3),dS);
+            mJ21(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(N3(find_ni(i_indx),:)',[],3),reshape(M1(find_nj(j_indx),:).',[],3),dS);
             
-            mRgJ11(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(M3(find_ni(i_indx),:).',[],3),reshape(M(find_nj(j_indx),:)',[],3),dS);
-            mRgJ22(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(N3(find_ni(i_indx),:).',[],3),reshape(N(find_nj(j_indx),:)',[],3),dS);
-            mRgJ12(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(M3(find_ni(i_indx),:).',[],3),reshape(N(find_nj(j_indx),:)',[],3),dS);
-            mRgJ21(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(N3(find_ni(i_indx),:).',[],3),reshape(M(find_nj(j_indx),:)',[],3),dS);
+            mRgJ11(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(M3(find_ni(i_indx),:)',[],3),reshape(M(find_nj(j_indx),:).',[],3),dS);
+            mRgJ22(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(N3(find_ni(i_indx),:)',[],3),reshape(N(find_nj(j_indx),:).',[],3),dS);
+            mRgJ12(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(M3(find_ni(i_indx),:)',[],3),reshape(N(find_nj(j_indx),:).',[],3),dS);
+            mRgJ21(jj,ii,kk+1)=ndotxietaphicross([1,0,0].*oneeta,reshape(N3(find_ni(i_indx),:)',[],3),reshape(M(find_nj(j_indx),:).',[],3),dS);
         end
     end
 end
@@ -204,8 +204,8 @@ T=zeros(2*size(Q11));
 Tu=T;
 R=T;
 
-Qu=conj(1i*[Q11,-Q12;-Q21,Q22]/2/pi);
-RgQu=conj(1i*[RgQ11,-RgQ12;-RgQ21,RgQ22]/2/pi);
+Qu=(2i*pi*[-Q11,Q12;Q21,-Q22]);
+RgQu=(2i*pi*[-RgQ11,RgQ12;RgQ21,-RgQ22]);
 % eyeR=eye(size(RgQu));
 MC=mode_couplings_spheroidal(nmax,[inf,1]);
 
@@ -218,8 +218,8 @@ UUNNUU=blkdiag(UNUd,UNUd);
 UiNUd=spherical_to_spheroidal(isProlate,k_medium*c,inv(N2));
 UUiNNUU=blkdiag(UiNUd,UiNUd);
 
-Q=UUiNNUU*Qu;
-RgQ=UUiNNUU*RgQu;
+Q=MC.*(UUiNNUU*Qu);
+RgQ=MC.*(UUiNNUU*RgQu);
 
 for ii=1:size(Q11,2)*2
     jvec=find(MC(:,ii));
