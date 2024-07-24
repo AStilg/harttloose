@@ -27,7 +27,7 @@ p=[4.158083334531387e-01     2.097392773191518e-01]; %approx inverse values
 x0=cos(linspace(pi-1./ix0,1./ix0,n));
 
 x=x0;
-for jj=1:2
+for jj=1:3
     [L]=legendrecol(n+1,x,0,1)./spherical_harmonic_normalisation([0:n+1]',0);
     dL=((-n-1)*L(end,:)+(n+1)*x.*L(end-1,:))./(1-x.^2);
     L=L(end-1,:);

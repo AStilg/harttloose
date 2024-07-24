@@ -1,4 +1,4 @@
-function A_mod = spherical_to_spheroidal(isProlate,c,A,nmaxout);
+function A_mod = spherical_to_spheroidal(isProlate,c,A,nmaxout,force_vector);
 % spherical_to_spheroidal - transforms TE or TM coefficients to spheroidal
 %							equivalents. This is helper function.
 %
@@ -31,8 +31,11 @@ function A_mod = spherical_to_spheroidal(isProlate,c,A,nmaxout);
 % The LICENSE can be obtained at: https://github.com/AStilg/harttloose/blob/main/LICENSE
 
 nmax=floor(sqrt(size(A,1)));
-if nargin==3
+if nargin<4
 	nmaxout=nmax;
+end
+if nargin<5
+	force_vector=false;
 end
 
 total_index_in=[1:nmax*(nmax+2)]+1;
@@ -47,14 +50,14 @@ if numel(c)>1
     [U,~,~,im_v]=spheroidal_expansion(isProlate,c(1),(max([nmax,nmaxout])));
     Umod2=U(total_index_out,total_index_in).*(im_v(total_index_out).*im_v(total_index_in)');
     
-    if size(A,2)>1
+    if and(size(A,2)>1,~force_vector)
         A_mod=Umod2*((A.*N.'./N)*Umod');
     else
         error('A vector cannot have two mediums of operation!');
     end    
 else
     
-    if size(A,2)>1
+    if and(size(A,2)>1,~force_vector)
         A_mod=Umod*((A.*N.'./N)*Umod');
     else
         A_mod=(Umod)*(A./N);
