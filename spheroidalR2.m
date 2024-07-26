@@ -125,7 +125,13 @@ for ii=1:length(xi)
     
     Rnm_full=sumz(:,:,ii)./I2;
     dRnm_mod_full=dsumz(:,:,ii)./I2; %need to selah
-    
+
+    if isProlate
+        est_offset=floor((r-m)./(8.5*(abs(xi(ii))-1)+1)/2);
+    else
+        est_offset=floor((r-m)./(4.0*(abs(xi(ii)))+.01)/2);
+    end
+
     est_offset=floor((r-m)./(8.5*(abs(xi(ii))-isProlate)+1)/2);
     col=nref-est_offset;
     col(col<1)=1;
