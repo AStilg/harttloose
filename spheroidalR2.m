@@ -129,13 +129,12 @@ for ii=1:length(xi)
     if isProlate
         est_offset=floor((r-m)./(8.5*(abs(xi(ii))-1)+1)/2);
     else
-        est_offset=floor((r-m)./(4.0*(abs(xi(ii)))+.01)/2);
+        est_offset=floor((r-m)./(4.5*(abs(xi(ii)))+.5)/2);
     end
 
-    est_offset=floor((r-m)./(8.5*(abs(xi(ii))-isProlate)+1)/2);
     col=nref-est_offset;
     col(col<1)=1;
-    
+
     R_t=tril(Rnm_full(:,:));
     dR_t=tril(dRnm_mod_full(:,:));
 
