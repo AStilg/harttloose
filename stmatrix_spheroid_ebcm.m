@@ -157,7 +157,7 @@ for ii=1:length(uniq_n)
     end
 end
 %%
-Q11=zeros((nmax*(nmax+2)+1));
+Q11=sparse((nmax*(nmax+2)+1),(nmax*(nmax+2)+1));
 Q21=Q11;
 Q12=Q11;
 Q22=Q11;
@@ -200,7 +200,7 @@ for m=0:size(J11,3)-1
 end
 %% create a code to block up EBCM code to subspace.
 
-T=zeros(2*size(Q11));
+T=sparse(2*(nmax*(nmax+2)+1),2*(nmax*(nmax+2)+1));
 Tu=T;
 R=T;
 
