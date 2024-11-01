@@ -5,6 +5,7 @@ function [knm1]=spheroidal_kappac(isProlate,n,m,c,allvalues);
 % usage :
 %
 % knmc=spheroidal_kappac(isProlate,n,m,c,allvalues);
+% knmc=Snmc/Rnmc (this is defined opposite to everyone else, fix before release)
 %
 % isProlate - true/false
 % n         - pseudo radial coordinate
