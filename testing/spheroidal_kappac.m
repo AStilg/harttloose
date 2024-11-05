@@ -5,7 +5,6 @@ function [knm1]=spheroidal_kappac(isProlate,n,m,c,allvalues);
 % usage :
 %
 % knmc=spheroidal_kappac(isProlate,n,m,c,allvalues);
-% knmc=Snmc/Rnmc (this is defined opposite to everyone else, fix before release)
 %
 % isProlate - true/false
 % n         - pseudo radial coordinate
@@ -24,18 +23,21 @@ if nargin==4
 end
 
 if isProlate
-    knm1=(spheroidalS1(isProlate,n,abs(m),c,3i,allvalues)./spheroidalR1(isProlate,n,abs(m),c,3i,allvalues));
+    knm1=(spheroidalS1(isProlate,n,abs(m),c,sqrt(2)*1i,allvalues)./spheroidalR1(isProlate,n,abs(m),c,sqrt(2)*1i,allvalues));
     if mod(m,2)
     	knm1=-1i*knm1;
     end
 else
-    knm1=(spheroidalS1(isProlate,n,abs(m),c,[1i,-1e-8i],allvalues)./spheroidalR1(isProlate,n,abs(m),c,[-1,1e-8]',allvalues));
-    knm1=mod(n+m+1,2)*real(knm1)+mod(n+m,2)*imag(knm1);
+    knm1=(spheroidalS1(isProlate,n,abs(m),c,[1.01i,-1e-8i],allvalues)./spheroidalR1(isProlate,n,abs(m),c,[-1.01i,1e-8]',allvalues));
+    if mod(m,2)
+    	knm1=-1i*knm1;
+    end
     nd=n;
     if size(knm1,1)~=1
         nd=[0:size(knm1,1)-1]'*2+abs(m)+mod(n+m,2);
     end
-    switchcol=(2*abs(c)>nd-m)*size(knm1,1)+[1:size(knm1,1)]';
+    [~,indx]=max(abs(knm1),[],2); %maximum value is going to be correct.
+    switchcol=(indx-1)*size(knm1,1)+[1:size(knm1,1)]';
     knm1=knm1(switchcol);
-
 end
+knm1=1./knm1;

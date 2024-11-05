@@ -109,12 +109,18 @@ if isProlate
         Rnm(:,xi==1)=0;
     end
 else
-    Rnm=(((xi.^2)+1)./(xi.^2)).^(abs(m)/2).*(((1i).^(r'-n').*U)*RJs)./spheroidalNormalisation;
+    if allvalues
+        oblsum=(((1i).^(r'-n').*U)*RJs);
+    else %hack for sum 0?
+        oblsum=cumsum((((1i).^(r'-n').*U)).'.*RJs); %neumaiersum is alternative....
+        oblsum=oblsum(end,:);
+    end
+    Rnm=(((xi.^2)+1)./(xi.^2)).^(abs(m)/2).*oblsum./spheroidalNormalisation;
 
     if isOdd
         Rnm(:,xi==0)=0;
     else
-        Rnm(:,xi==0)=repmat(c.^m*(((1i).^(n'-m).*U(:,1))*((besselNormalisation(1)).*(2.^(1+nv(1)).*factorial(nv(1)+1)./factorial(2*(nv(1)+1)))))./spheroidalNormalisation,[1,sum(xi==0)]);
+        Rnm(:,xi==0)=repmat((-1).^m.*c.^m*(((1i).^(n'-m).*U(:,1))*((besselNormalisation(1)).*(2.^(1+nv(1)).*factorial(nv(1)+1)./factorial(2*(nv(1)+1)))))./spheroidalNormalisation,[1,sum(xi==0)]);
     end
     
 end
@@ -144,8 +150,8 @@ else
     dRnm_mod(:,xi==0)=(1+isOdd)*Rnm(:,xi==0);
 end
 
-if ~allvalues
-    Rnm=Rnm(:);
-    dRnm_mod=dRnm_mod(:);
-end
+% if ~allvalues
+%     Rnm=Rnm(:);
+%     dRnm_mod=dRnm_mod(:);
+% end
 
