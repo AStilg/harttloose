@@ -215,7 +215,13 @@ if or(nargout<3,htype>0)
     M=[sigma.*(1i.*m.*eta.*Snm.*Rnm)./(xi_f.*xieta_f),   -sign(m).*(1i.*xi.*dphiSnm.*Rnm)./(xieta_f),    xi_f.*(xi.*dSnm.*Rnm-eta_f.*sigma.*eta.*Snm.*dxiRnm)./xieta2_f].*repmat((sign(m)).^m.*exp(1i*m.*phi),[1,3]);
     %we consider m correct now!
     polarTerm=m.*xi.*sign(m).*dphiSnm.*Rnm.*(1./xi2_f-1./xieta2_f)./eta_f;
-    polarTerm(:,abs(eta)==1)=0;
+
+    if length(n)~=1
+        polarTerm(:,abs(eta)==1)=0;
+    else
+        polarTerm(abs(eta)==1)=0;
+    end
+
 
     N=[(sigma.*((xi.^2+sigma.*eta.^2.*(1+eta.^2-3.*sigma.*xi.^2))./xieta2_f.*Snm+eta.*eta_f.*dSnm)./xieta2_f.*dxiRnm - ...
         xi.*(2*sigma.*eta./xieta2_f.*eta_f.*dSnm-(sigma.*c.^2.*eta2_f+eigenvalues).*Snm).*Rnm./xieta2_f + ...
@@ -238,7 +244,11 @@ else
     M=[sigma.*(1i.*m.*eta.*Snm.*Rnm)./(xi_f.*xieta_f),   -sign(m).*(1i.*xi.*dphiSnm.*Rnm)./(xieta_f),    xi_f.*(xi.*dSnm.*Rnm-eta_f.*sigma.*eta.*Snm.*dxiRnm)./xieta2_f].*repmat((sign(m)).^m.*exp(1i*m.*phi),[1,3]);
     %we consider m correct now!
     polarTerm=m.*xi.*sign(m).*dphiSnm.*Rnm.*(1./xi2_f-1./xieta2_f)./eta_f;
-    polarTerm(:,abs(eta)==1)=0;
+    if length(n)~=1
+        polarTerm(:,abs(eta)==1)=0;
+    else
+        polarTerm(abs(eta)==1)=0;
+    end
     
     N=[(sigma.*((xi.^2+sigma.*eta.^2.*(1+eta.^2-3.*sigma.*xi.^2))./xieta2_f.*Snm+eta.*eta_f.*dSnm)./xieta2_f.*dxiRnm - ...
         xi.*(2*sigma.*eta./xieta2_f.*eta_f.*dSnm-(sigma.*c.^2.*eta2_f+eigenvalues).*Snm).*Rnm./xieta2_f + ...
@@ -255,7 +265,11 @@ else
     M2=[sigma.*(1i.*m.*eta.*Snm.*Rnm)./(xi_f.*xieta_f),   -sign(m).*(1i.*xi.*dphiSnm.*Rnm)./(xieta_f),    xi_f.*(xi.*dSnm.*Rnm-eta_f.*sigma.*eta.*Snm.*dxiRnm)./xieta2_f].*repmat((sign(m)).^m.*exp(1i*m.*phi),[1,3]);
     %we consider m correct now!
     polarTerm=m.*xi.*sign(m).*dphiSnm.*Rnm.*(1./xi2_f-1./xieta2_f)./eta_f;
-    polarTerm(:,abs(eta)==1)=0;
+    if length(n)~=1
+        polarTerm(:,abs(eta)==1)=0;
+    else
+        polarTerm(abs(eta)==1)=0;
+    end
     
     N2=[(sigma.*((xi.^2+sigma.*eta.^2.*(1+eta.^2-3.*sigma.*xi.^2))./xieta2_f.*Snm+eta.*eta_f.*dSnm)./xieta2_f.*dxiRnm - ...
         xi.*(2*sigma.*eta./xieta2_f.*eta_f.*dSnm-(sigma.*c.^2.*eta2_f+eigenvalues).*Snm).*Rnm./xieta2_f + ...
@@ -268,7 +282,11 @@ else
     M3=[sigma.*(1i.*m.*eta.*Snm.*R1nm)./(xi_f.*xieta_f),   -sign(m).*(1i.*xi.*dphiSnm.*R1nm)./(xieta_f),    xi_f.*(xi.*dSnm.*R1nm-eta_f.*sigma.*eta.*Snm.*dxiR1nm)./xieta2_f].*repmat((sign(m)).^m.*exp(1i*m.*phi),[1,3]);
     %we consider m correct now!
     polarTerm=m.*xi.*sign(m).*dphiSnm.*R1nm.*(1./xi2_f-1./xieta2_f)./eta_f;
-    polarTerm(:,abs(eta)==1)=0;
+    if length(n)~=1
+        polarTerm(:,abs(eta)==1)=0;
+    else
+        polarTerm(abs(eta)==1)=0;
+    end
     
     N3=[(sigma.*((xi.^2+sigma.*eta.^2.*(1+eta.^2-3.*sigma.*xi.^2))./xieta2_f.*Snm+eta.*eta_f.*dSnm)./xieta2_f.*dxiR1nm - ...
         xi.*(2*sigma.*eta./xieta2_f.*eta_f.*dSnm-(sigma.*c.^2.*eta2_f+eigenvalues).*Snm).*R1nm./xieta2_f + ...

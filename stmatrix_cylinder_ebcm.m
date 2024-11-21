@@ -263,7 +263,7 @@ RgQ=MC.*(UUiNNUU*RgQu);
 
 for ii=1:size(Q11,2)*2
     jvec=find(MC(:,ii));
-    R(jvec,ii)=-(Qu(:,jvec)\UUNNUU(:,ii));
+    R(jvec,ii)=-(Qu(jvec,jvec)\UUNNUU(jvec,ii));
 end
 
 Qut=Qu.';
@@ -277,7 +277,7 @@ for ii=1:size(Q11,2)*2
 
 
     ivec=find(MC(ii,:));
-    Tu(ii,ivec)=-(Qut(:,ivec)\RgQut(:,ii)).';
+    Tu(ii,ivec)=-(Qut(ivec,ivec)\RgQut(ivec,ii)).';
 
 end
 
