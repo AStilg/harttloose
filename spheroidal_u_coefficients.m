@@ -79,6 +79,7 @@ if abs(c)~=0
     u=u(:,sorted_index);
     
     uold=u.';
+    uold=uold./sqrt(sum(uold.^2,2));
     
     % now refine the elements, must be done in MATLAB (but not octave) because
     % it uses an approximate method to find eigenvectors which produces LARGE
@@ -113,6 +114,7 @@ if abs(c)~=0
     % end    
     
     u=u.'; %transpose so that matrix multiplication may be applied in calcs.
+    u=u./sqrt(sum(u.^2,2));
     
     %hack the coefficients using the signed real parts of the coefficient,
     %this ensures that there is consistency between different problem
@@ -121,11 +123,11 @@ if abs(c)~=0
     %of the angular spheroidal wavefunctions. A good choice for this will
     %be eta=0 for even functions and gradients for odd.    
     
-	Pmm=(-1)^(m).*sqrt((2*m+1)./(4*pi)).*prod([1:2:2*m-1])./prod(sqrt([1:2*m])); %calculate ass legendre function P_m^m(0).
+    Pmm=(-1)^(m).*sqrt((2*m+1)./(4*pi)).*prod([1:2:2*m-1])./prod(sqrt([1:2*m])); %calculate ass legendre function P_m^m(0).
 
     v=[Pmm;-sqrt(((-1+m-(n-isOdd)).*(1+m+(n-isOdd)).*(5+2.*(n-isOdd)))./((-2+m-(n-isOdd)).*(2+m+(n-isOdd)).*(1+2.*(n-isOdd))))];
 	
-	cv=cumprod(v);
+    cv=cumprod(v);
     
     if isOdd
         v=-sqrt(m+n).*sqrt((-m+n).*(1+2.*n)./((-1+2.*n))).*cv(1:end-1);
