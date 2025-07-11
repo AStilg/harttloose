@@ -31,7 +31,7 @@ not_small_args = find( ~(abs(kr) < 1e-15) );
 
 if length(kr) == 1 && abs(kr) < ((1e-15))
 
-    yn = -kr.^(-n-1) .*repmat(prod(1:2:(2*n+1)),[1,length(n)]);
+    yn = -kr.^(-n-1) .*repmat(prod([1,1:2:(2*n-1)]),[1,length(n)]);
     
 elseif length(kr) == 1 && ~((1e-15).^(1./(-n-1)))
 
@@ -40,13 +40,13 @@ elseif length(n) == 1
 
     yn(not_small_args) = ...
         sqrt(pi./(2*(kr(not_small_args)))) .* yn(not_small_args);
-    yn(small_args) = -kr(small_args).^(-n-1) .* prod(1:2:(2*n+1));
+    yn(small_args) = -kr(small_args).^(-n-1) .* prod([(2*n-1):-2:1,1]);
 else % both n and kr are vectors
 
     yn(not_small_args) = ...
         sqrt(pi./(2*(kr(not_small_args)))) .* yn(not_small_args);
     yn(small_args) = -kr(small_args).^(-n(small_args)-1) .* ...
-        prod(1:2:(2*n(small_args)+1));
+        prod([(2*n(small_args)-1):-2:1,1]);
 end
 
 yn=(yn);

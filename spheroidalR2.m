@@ -48,7 +48,7 @@ m=abs(m);
 % derived parameters:
 xi=(xi(:).');
 isOdd=mod(n+abs(m),2); %not needed for this method
-N=ceil(n+abs(c)+15);
+N=ceil(n+abs(c)+15+floor(2./sqrt(min(xi(:)))));
 
 % compute superposition weights:
 [U,r,eigenvalues]=spheroidal_u_coefficients(isProlate,isOdd,abs(m),c,N);
@@ -56,7 +56,7 @@ N=ceil(n+abs(c)+15);
 % Ifac=U0(r==n,r==nd);
 
 %use clenshaw-curtis
-[acoseta,wi]=gausslegendreroot(4*(N+1),[0,pi/2]); %it'll be fine.
+[acoseta,wi]=gausslegendreroot(6*(N+1),[0,pi/2]); %it'll be fine.
 eta=cos(acoseta);
 
 [XI,ETA]=meshgrid(xi,eta);
@@ -132,7 +132,7 @@ for ii=1:length(xi)
         est_offset=floor((r-m)./(4.5*(abs(xi(ii)))+.5)/2);
     end
 
-    col=nref-est_offset;
+    col=nref-est_offset-1;
     col(col<1)=1;
 
     R_t=tril(Rnm_full(:,:));
